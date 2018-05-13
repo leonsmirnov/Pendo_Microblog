@@ -5,7 +5,7 @@ exports.getUsers = (req, res)=>{
     User.find({})
     .then((result)=>{
         res.send(result)
-    })
+    }).catch((err)=>{res.send(err)})
 }
 
 exports.getUserByUserName = (req, res)=>{
@@ -21,7 +21,6 @@ exports.getUserByUserName = (req, res)=>{
 }
 
 
-
 exports.postUser = (req, res)=>{
     var user = req.body.userName;
     User.findOne({userName:user})
@@ -29,10 +28,10 @@ exports.postUser = (req, res)=>{
         if(result===null){
             var tmp = new User({userName:user})
             tmp.save()
-            .then(()=>{res.send(user + ' created and saved to DB')})
+            .then(()=>{res.send(user + ' saved to DB')})
             .catch((err)=>{res.send(err)});
         }else{
-            res.send('user alredy exists..') 
+            res.send('user alredy exists!') 
         }
     })
     .catch((err)=>{res.send(err)});
