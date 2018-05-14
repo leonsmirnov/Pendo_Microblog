@@ -8,7 +8,10 @@ var lruOptions = {max: 100, maxAge: 1000*60}
 var cache = LRU(lruOptions);
 
 exports.getPosts = (req, res)=>{
-    res.send('getPost');
+    Post.find({}).then((results)=>{
+        res.send(results);
+    })
+    .catch((err)=>{res.send(err)})
 }
 
 exports.postPost = (req, res)=>{
