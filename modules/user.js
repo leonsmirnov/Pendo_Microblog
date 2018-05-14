@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 var UserSchema = new Schema({
     _id:{type:Schema.ObjectId, default:()=>{new ObjectId()} , auto:true},
-    userName: String,
+    userName: {type: String, required:true},
     votedFor: [{type: Schema.Types.ObjectId, ref: 'Post'}]
 });
 
