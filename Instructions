@@ -1,0 +1,57 @@
+Docker and Docker-compose must be installed for running the project in Docker 
+Running the project: run "docker-compose up" in the project root folder.
+
+For running the project without Docker - MongoDB must be installed the connection URL and PORT should be configured in configure/default.json file
+Run "node app.js" in the project root folder.
+
+Working with Posts and Users:
+Note: before posting a new "Post" a related user must be created first.
+
+Get all users:
+GET localhost:3000/users
+
+Get user by username
+GET localhost:3000/users/:userName
+
+Post new user (body must contain unique username):
+POST localhost:3000/users
+Body:
+{
+	"userName":"new user"
+}
+
+
+Get all Posts:
+GET localhost:3000/posts
+
+Get top Posts (top variable can be changed in config/defaultjson file):
+GET localhost:3000/posts/top
+
+Post new Post (body must contain existing user in DB):
+POST localhost:3000/posts
+Body:
+{
+	"content":"posts content",
+	"user":"userId"
+}
+
+Update Post:
+PUT localhost:3000/update/:postId
+Body:
+{
+	"content":"new content"
+}
+
+Upvote/DownVote Post:
+PUT localhost:3000/upvote/post/:postId/user/:username
+PUT localhost:3000/downvote/post/:postId/user/:username
+
+postId: is the postId of the voted post
+username: is the user who votes for the post
+
+
+
+
+
+
+
