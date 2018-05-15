@@ -48,10 +48,8 @@ exports.getTopPosts = (req, res)=>{
     var top = cache.get('top');
 
     if(top){
-        console.log('got from cache: ' + new Date());
         res.send(top);
     }else{
-        console.log('got from DB: ' + new Date());
         Post.find({}).sort({'voteCount':-1, 'crearedOn':-1}).limit(num).exec()
         .then((results)=>{
             var ans = JSON.stringify(results);
