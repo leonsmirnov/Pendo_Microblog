@@ -1,5 +1,5 @@
 {
-    "dbHost": "mongodb://mongo:27017/pendoMicroblogDB",
+    "dbHost": "mongodb://localhost:27017/pendoMicroblogDB",
     "serverPort":3000,
 
     "top":10
