@@ -13,16 +13,12 @@ var Post = require('./routes/postRouter');
 
 mongoose.connect(config.dbHost)
 var db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 db.on('error', function(err){console.log(err.message);});
 
 db.once('open', function(){
     console.log('mongodb connection open')
 });
-
-
-
 
 app.use('/users', User);
 app.use('/posts', Post);
